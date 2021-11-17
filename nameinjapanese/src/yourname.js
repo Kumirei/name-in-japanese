@@ -87,7 +87,7 @@ async function getAvailableLanguages(titles) {
 
 function getJapaneseTitles(pages) {
     return Object.values(pages)
-        .map((page) => [page.pageid, page.langlinks?.find((link) => link.lang == 'ja')?.['*']]) // Extract Japanese title
+        .map((page) => [page.pageid, page.langlinks?.find((link) => link.lang === 'ja')?.['*']]) // Extract Japanese title
         .filter((page) => page[1]) // Filter out pages without Japanese titles
 }
 
