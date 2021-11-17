@@ -32,6 +32,7 @@ async function nameInJapanese(name) {
             console.log(title[0], title[1], article.title, article.snippet)
         })
     }
+    return spelling
 }
 
 function countFrequency(arr) {
@@ -98,3 +99,5 @@ function searchWikipedia(searchParams) {
     const url = `https://en.wikipedia.org/w/api.php?origin=*&${query}`
     return fetch(url).then((r) => r.json())
 }
+
+export default nameInJapanese

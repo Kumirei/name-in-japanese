@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import * as React from 'react'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
+import nameInJapanese from './yourname'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [name, setName] = React.useState('')
+
+    const processAfterMs = 500
+    let timeout = 0
+    let lastInput = 0
+    function handleInputChange(event, b, c) {
+        if ((event.timeStamp - lastInput) / 1000 < processAfterMs / 100) {
+            clearTimeout(timeout)
+            timeout = setTimeout(async () => {
+                console.log('timeout', event.target.value)
+                const japaneseName = await nameInJapanese(event.target.value)
+                setName(japaneseName)
+            }, processAfterMs)
+        }
+        lastInput = event.timeStamp
+    }
+
+    return (
+        <div className='App'>
+            <header>
+                <Typography variant='h6' gutterBottom component='h1'>
+                    Your Name In Japanese
+                </Typography>
+            </header>
+            <TextField fullwidth onChange={handleInputChange} id='outlined-basic' label='Outlined' variant='outlined' />
+            <Typography variant='p' gutterBottom component='p'>
+                Your name is {name}
+            </Typography>
+        </div>
+    )
 }
 
-export default App;
+export default App
