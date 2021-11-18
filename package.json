@@ -1,12 +1,43 @@
 {
-  "name": "yournameinjapanese",
-  "version": "1.0.0",
-  "description": "",
-  "main": "yourname.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "nameinjapanese",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@emotion/react": "^11.6.0",
+        "@emotion/styled": "^11.6.0",
+        "@mui/material": "^5.1.1",
+        "@mui/system": "^5.1.1",
+        "@mui/x-data-grid": "^5.0.1",
+        "@testing-library/jest-dom": "^5.15.0",
+        "@testing-library/react": "^11.2.7",
+        "@testing-library/user-event": "^12.8.3",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "4.0.3",
+        "web-vitals": "^1.1.2"
+    },
+    "scripts": {
+        "start": "react-scripts --openssl-legacy-provider start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
