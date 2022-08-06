@@ -140,7 +140,7 @@ function extractJapaneseNames(name, articles) {
 // Input:       [{name, article}]
 // Output:      [{freq, name, articles}]
 function getNameFrequency(data) {
-    const names = data.map((e) => e.name)
+    const names = data.map((e) => cleanName(e.name))
     const freqs = getFrequency(names)
     const articlesMap = {}
     data.forEach((d) => {
@@ -150,6 +150,13 @@ function getNameFrequency(data) {
     const freqList = Object.entries(freqs).map(([name, freq]) => ({ name, freq, articles: articlesMap[name] }))
     freqList.sort((a, b) => b.freq - a.freq)
     return freqList // [{freq, name, articles}]
+}
+
+function cleanName(name) {
+    return name
+        .replace(/\(.*?\)/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
 }
 
 // Get Frequency
