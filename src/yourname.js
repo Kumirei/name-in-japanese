@@ -144,8 +144,9 @@ function getNameFrequency(data) {
     const freqs = getFrequency(names)
     const articlesMap = {}
     data.forEach((d) => {
-        if (!articlesMap[d.name]) articlesMap[d.name] = []
-        articlesMap[d.name].push(d.article)
+        const name = cleanName(d.name)
+        if (!articlesMap[name]) articlesMap[name] = []
+        articlesMap[name].push(d.article)
     })
     const freqList = Object.entries(freqs).map(([name, freq]) => ({ name, freq, articles: articlesMap[name] }))
     freqList.sort((a, b) => b.freq - a.freq)
